@@ -1,0 +1,35 @@
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="text-center">Edit a car</h4>
+  </div>
+  <div class="panel-body">
+    <form action="/cars/{{car._id}}" method="post">
+      <input type="hidden" name="_method" value="PUT">
+      <div class="form-group">
+        <input type="text" class="form-control" name="driver_name" placeholder="Driver Name"
+          value="{{car.driver_name}}">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="license_plate" placeholder="License Plate"
+          value="{{car.license_plate}}">
+      </div>
+      <div class="form-group">
+        <select name="status" id="" class="form-control">
+          {{#equals car.status "IN"}}
+          <option value="IN">Inside</option>
+          <option value="OUT">Outside</option>
+          <option value="-1">Choose an Option</option>
+          {{/equals}}
+          {{#equals car.status "OUT"}}
+          <option value="OUT">Outside</option>
+          <option value="IN">Inside</option>
+          <option value="-1">Choose an Option</option>
+          {{/equals}}
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Edit" class="btn btn-success">
+      </div>
+    </form>
+  </div>
+</section>
